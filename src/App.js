@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "antd/dist/antd.css";
+import "./index.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Layout } from "antd";
+
+import SideMenu from "./components/layout/sider";
+import HeadBar from "./components/layout/header";
+import MainContent from "./components/layout/content";
+import MatchContextProvider from "./context/matchContext";
+const { Footer } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <MatchContextProvider>
+      <HeadBar />
+      <Layout style={{padding: "20px 50px"}} >
+        <Layout >
+          <MainContent />
+        </Layout>
+        <SideMenu />
+      </Layout>
+      <Footer style={{ textAlign: "center" }}>
+        Matches information ©2020 Created by Nesreen Khalid
+      </Footer>
+      </MatchContextProvider>
+    </Layout>
   );
 }
 
